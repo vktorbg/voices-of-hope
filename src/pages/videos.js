@@ -63,9 +63,9 @@ const VideosView = () => {
             alt="YouTube" 
             className="w-16 h-16 sm:w-20 sm:h-20 mb-2 sm:mb-3"
           />
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-sm">Nuestros Videos</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-sm">Our Videos</h2>
           <p className="text-sm sm:text-base text-gray-200 max-w-md">
-            Contenido inspirador en videos cortos. ¡Esperanza y sabiduría para tu día!
+            Inspiring content in short videos. Hope and wisdom for your day!
           </p>
         </div>
       </div>
@@ -95,10 +95,10 @@ const VideosView = () => {
               className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-sm sm:text-base"
             >
               <img src={youtubeIconUrl} alt="" className="w-5 h-5 mr-2" />
-              Visita y Sigue Nuestro Canal
+              Visit and Follow Our Channel
             </a>
             <p className="mt-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-              ¡No te pierdas nuestros últimos videos!
+              Don't miss our latest videos!
             </p>
           </div>
           {/* Resto de videos en el orden dado */}

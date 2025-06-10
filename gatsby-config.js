@@ -7,7 +7,10 @@ const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS)
  */
 module.exports = {
   siteMetadata: {
-    title: `Voces de Esperanza`,
+    title: `Voices of Hope`,
+    description: `Devotionals and resources to inspire and encourage.`,
+    author: `Voices of Hope Team`,
+    siteUrl: `https://voices-of-hope.com`,
   },
   plugins: [
     `gatsby-plugin-postcss`,

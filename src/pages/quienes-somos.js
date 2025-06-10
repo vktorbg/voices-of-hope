@@ -39,14 +39,14 @@ const QuienesSomosView = () => {
       {/* Banner with Background Image */}
       <div className="relative h-48 sm:h-64">
         <img 
-          src="/banner-nosotros.jpg" // Assumes banner-nosotros.jpg is in /static folder
-          alt="Quiénes Somos banner background" 
+          src="/banner-nosotros.jpg"
+          alt="Who We Are banner background" 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-4">
           <UsersIcon className="w-16 h-16 sm:w-20 sm:h-20 text-white mb-2 sm:mb-3 opacity-90" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-sm">Quiénes Somos</h2>
-          <p className="text-sm sm:text-base text-gray-200 max-w-md">Conoce el corazón y la misión detrás de Voces de Esperanza.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-sm">Who We Are</h2>
+          <p className="text-sm sm:text-base text-gray-200 max-w-md">Discover the heart and mission behind Voices of Hope.</p>
         </div>
       </div>
 
@@ -54,31 +54,31 @@ const QuienesSomosView = () => {
       <div className="p-4 sm:p-6">
         <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed text-base">
           <p>
-            <strong>Voces de Esperanza</strong> es un proyecto conjunto entre <strong>Ayuda para Vivir</strong> y nuestro <strong>Equipo de Capacitación</strong>. Este proyecto ofrece capacitación en discipulado y liderazgo en las siguientes áreas ministeriales bíblicas:
+            <strong>Voices of Hope</strong> is a joint project between <strong>Ayuda para Vivir</strong> and our <strong>Training Team</strong>. This project offers discipleship and leadership training in the following biblical ministry areas:
           </p>
           <ul className="list-disc list-inside pl-4 space-y-2">
-            <li>Desarrollo de Liderazgo,</li>
-            <li>El Seminario de Semillas y</li>
-            <li>Discipulado Enfocado (Ayuda para Vivir)</li>
+            <li>Leadership Development,</li>
+            <li>The Seeds Seminar, and</li>
+            <li>Focused Discipleship (Ayuda para Vivir)</li>
           </ul>
           <p>
-            <strong>Ayuda para Vivir</strong> es un ministerio de consejería bíblica enfocado en ayudar a las personas a usar herramientas bíblicas para encontrar libertad y crecimiento espiritual. Christopher Chantres y su esposa dirigen este ministerio en Puebla, México.
+            <strong>Ayuda para Vivir</strong> is a biblical counselling ministry focused on helping people use biblical tools to find freedom and spiritual growth. Christopher Chantres and his wife lead this ministry in Puebla, Mexico.
           </p>
           <div>
-            <p className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Nuestro <strong>Equipo de Capacitación</strong> está compuesto por:</p>
+            <p className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Our <strong>Training Team</strong> consists of:</p>
             <ul className="list-disc list-inside pl-4 space-y-1">
               <li><strong>Phil English:</strong> Director.</li>
-              <li><strong>Christopher e Irys Chantres:</strong> Consejeros.</li>
+              <li><strong>Christopher & Irys Chantres:</strong> Counsellors.</li>
               <li><strong>Bernabé Vázquez:</strong> Pastor.</li>
               <li><strong>Misael Cabrera:</strong> Tutor.</li>
-              <li><strong>Lilia Meza:</strong> Pastora.</li>
-              <li><strong>Víctor Briceño:</strong> Director técnico.</li>
+              <li><strong>Lilia Meza:</strong> Pastor.</li>
+              <li><strong>Víctor Briceño:</strong> Technical Director.</li>
             </ul>
           </div>
 
           <div className="mt-8 pt-6 pb-4 border-t border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">
-              ¡Conéctate con nosotros!
+              Connect with us!
             </h3>
             <div className="space-y-3 text-center">
               <div className="text-gray-700 dark:text-gray-300">
@@ -92,7 +92,7 @@ const QuienesSomosView = () => {
                 </a>
               </div>
               <div className="text-gray-700 dark:text-gray-300">
-                <strong className="block sm:inline mb-1 sm:mb-0">Correo:</strong>
+                <strong className="block sm:inline mb-1 sm:mb-0">Email:</strong>
                 <a href="mailto:voces.deesperanza025@gmail.com" className="ml-0 sm:ml-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 block sm:inline">
                   voces.deesperanza025@gmail.com
                 </a>

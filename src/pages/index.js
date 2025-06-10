@@ -60,8 +60,8 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
     return (
       <div className="flex flex-col items-center justify-center flex-grow text-center p-8 max-w-2xl mx-auto">
         <BookOpenIcon className="w-16 h-16 text-gray-400 dark:text-gray-500 mb-4" />
-        <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Sin devocional para hoy</h2>
-        <p className="text-gray-500 dark:text-gray-400">Por favor, revisa más tarde.</p>
+        <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No devotional for today</h2>
+        <p className="text-gray-500 dark:text-gray-400">Please check back later.</p>
       </div>
     );
   }
@@ -70,16 +70,16 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
     <div className="font-sans w-full max-w-md sm:max-w-2xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg"
          style={{ maxWidth: '95vw' }}>
       <div className="flex items-center mb-6">
-        <img src="/icon.jpg" alt="Logo Voces de Esperanza" className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg mr-4 shadow" />
+        <img src="/icon.jpg" alt="Voices of Hope Logo" className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg mr-4 shadow" />
         <div>
-          <div className="text-xs text-blue-600 dark:text-blue-400 uppercase font-semibold tracking-wider">VOCES DE ESPERANZA</div>
+          <div className="text-xs text-blue-600 dark:text-blue-400 uppercase font-semibold tracking-wider">VOICES OF HOPE</div>
           <div className="flex items-center gap-2">
-            <div className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100">Devocional del día</div>
+            <div className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100">Devotional of the Day</div>
             <button
               onClick={() => window.location.reload()}
-              title="Recargar"
+              title="Reload"
               className="ml-2 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-              aria-label="Recargar"
+              aria-label="Reload"
             >
               <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582M20 20v-5h-.581M5.582 9A7.003 7.003 0 0112 5c3.314 0 6.127 2.01 7.418 4.857M18.418 15A7.003 7.003 0 0112 19c-3.314 0-6.127-2.01-7.418-4.857" />
@@ -91,7 +91,7 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
               const fechaStr = devocional.fecha.split("T")[0];
               const [y, m, d] = fechaStr.split("-");
               const fechaLocal = new Date(Number(y), Number(m) - 1, Number(d));
-              return fechaLocal.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+              return fechaLocal.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
             })()}
           </div>
         </div>
@@ -103,7 +103,7 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
 
       <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
         <div className="font-semibold text-lg text-gray-700 dark:text-gray-200 mb-1">
-           <span role="img" aria-label="book emoji" className="mr-2">📖</span> Versículo Clave:
+           <span role="img" aria-label="book emoji" className="mr-2">📖</span> Key Verse:
         </div>
         <div className="text-blue-600 dark:text-blue-400 uppercase font-semibold text-md sm:text-lg">{devocional.versiculo}</div>
         <div className="text-gray-600 dark:text-gray-300 mt-1">{devocional.cita}</div>
@@ -112,19 +112,19 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
       <div className="space-y-6">
         <div>
           <div className="font-semibold text-lg text-gray-700 dark:text-gray-200 mb-2">
-            <span role="img" aria-label="pray emoji" className="mr-2">🙏</span> Reflexión:
+            <span role="img" aria-label="pray emoji" className="mr-2">🙏</span> Reflection:
           </div>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{devocional.reflexion}</p>
         </div>
         <div>
           <div className="font-semibold text-lg text-gray-700 dark:text-gray-200 mb-2">
-            <span role="img" aria-label="thinking face emoji" className="mr-2">🤔</span> Pregunta:
+            <span role="img" aria-label="thinking face emoji" className="mr-2">🤔</span> Question:
           </div>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{devocional.pregunta}</p>
         </div>
         <div>
           <div className="font-semibold text-lg text-gray-700 dark:text-gray-200 mb-2">
-            <span role="img" aria-label="fire emoji" className="mr-2">🔥</span> Aplicación:
+            <span role="img" aria-label="fire emoji" className="mr-2">🔥</span> Application:
           </div>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{devocional.aplicacion}</p>
         </div>
@@ -143,39 +143,39 @@ const DevotionalView = ({ devocional, onWhatsAppClick }) => {
                     text: textToShare,
                   });
                 } catch (err) {
-                  // usuario canceló o error
+                  // user cancelled or error
                 }
               } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
                 navigator.clipboard.writeText(textToShare).then(() =>
-                  alert("¡Texto copiado! Puedes pegarlo en WhatsApp, Telegram, etc.")
+                  alert("Text copied! You can paste it in WhatsApp, Telegram, etc.")
                 );
               } else {
-                alert("No se pudo copiar o compartir el texto. Por favor, intente manualmente.");
+                alert("Could not copy or share the text. Please try manually.");
               }
             }}
           >
             <img
               src="https://img.icons8.com/material-two-tone/96/share-3.png"
-              alt="Compartir"
+              alt="Share"
               className="w-5 h-5 mr-2"
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
-            Compartir Devocional
+            Share Devotional
           </button>
           <button
             className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 inline-flex items-center gap-2 w-full sm:w-auto"
             onClick={onWhatsAppClick}
             type="button"
-            aria-label="Escríbenos por WhatsApp"
+            aria-label="Message us on WhatsApp"
           >
             <WhatsAppIcon />
-            <span className="hidden sm:inline">¿Tienes alguna duda? Escríbenos</span>
-            <span className="inline sm:hidden">Escríbenos</span>
+            <span className="hidden sm:inline">Have a question? Message us</span>
+            <span className="inline sm:hidden">Message us</span>
           </button>
           <div className="text-xs text-gray-400 mt-2">
             {typeof navigator !== 'undefined' && navigator.share
-              ? "Puedes compartir en WhatsApp, Telegram, redes sociales, etc."
-              : "Si no ves opciones de compartir, el texto se copiará al portapapeles."}
+              ? "You can share on WhatsApp, Telegram, social media, etc."
+              : "If you don't see sharing options, the text will be copied to your clipboard."}
           </div>
         </div>
       )}
@@ -254,8 +254,8 @@ const IndexPage = ({ data }) => {
         <div className="fixed left-0 right-0 bottom-[64px] sm:bottom-[72px] z-50 flex justify-center">
           <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl p-5 w-[90vw] max-w-xs animate-fade-in flex flex-col items-center">
             <div className="mb-3 text-center font-semibold text-gray-800 dark:text-gray-100">
-              ¿Tienes alguna duda?<br />
-              <span className="text-sm text-gray-600 dark:text-gray-300">¡Contáctanos por WhatsApp!</span>
+              Have a question?<br />
+              <span className="text-sm text-gray-600 dark:text-gray-300">Contact us on WhatsApp!</span>
             </div>
             <div className="flex flex-col gap-3 w-full">
               {contacts.map((c) => (
@@ -275,7 +275,7 @@ const IndexPage = ({ data }) => {
               className="mt-4 w-full text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition"
               onClick={() => setShowWhatsAppBox(false)}
             >
-              Cerrar
+              Close
             </button>
           </div>
         </div>

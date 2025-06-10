@@ -42,10 +42,10 @@ const RecursosView = () => {
   const compartirEnlace = (url) => {
     navigator.clipboard.writeText(url)
       .then(() => {
-        alert("Enlace copiado al portapapeles: " + url);
+        alert("Link copied to clipboard: " + url);
       })
       .catch((err) => {
-        console.error("Error al copiar el enlace: ", err);
+        console.error("Error copying the link: ", err);
       });
   };
 
@@ -76,7 +76,7 @@ const RecursosView = () => {
         >
           {/* Cambia el "+" por el ícono de libro */}
           <BookOpenIcon className="w-4 h-4" />
-          Opciones
+          Options
           <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
@@ -90,7 +90,7 @@ const RecursosView = () => {
                 onClick={() => setOpen(false)}
               >
                 <EyeIcon className="w-4 h-4" />
-                Leer
+                Read
               </Link>
             )}
             <a
@@ -101,7 +101,7 @@ const RecursosView = () => {
               onClick={() => setOpen(false)}
             >
               <ArrowDownTrayIcon className="w-4 h-4" />
-              Descargar
+              Download
             </a>
             <button
               type="button"
@@ -109,11 +109,11 @@ const RecursosView = () => {
                 setOpen(false);
                 if (navigator.share) {
                   navigator.share({
-                    title: `Compartir ${compartirLabel}`,
+                    title: `Share ${compartirLabel}`,
                     url: compartirHref,
                   })
-                    .then(() => console.log(`Compartido con éxito ${compartirLabel}`))
-                    .catch((error) => console.error("Error al compartir:", error));
+                    .then(() => console.log(`Successfully shared ${compartirLabel}`))
+                    .catch((error) => console.error("Error sharing:", error));
                 } else {
                   compartirEnlace(compartirHref);
                 }
@@ -123,7 +123,7 @@ const RecursosView = () => {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M18 12l-3-3m0 0l3-3m-3 3h9" />
               </svg>
-              Compartir
+              Share
             </button>
           </div>
         )}
@@ -157,14 +157,14 @@ const RecursosView = () => {
       <div className="relative h-48 sm:h-60 md:h-64">
         <img
           src="/banner-recursos.jpg"
-          alt="Recursos banner background"
+          alt="Resources banner background"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent flex flex-col items-center justify-center text-center p-4">
           <DocumentTextIcon className="w-16 h-16 sm:w-20 sm:h-20 text-white mb-2 sm:mb-3 opacity-90 drop-shadow-lg" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-md">Recursos</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2 shadow-md">Resources</h2>
           <p className="text-sm sm:text-base text-gray-100 max-w-lg drop-shadow">
-            Materiales y guías para fortalecer tu crecimiento espiritual y habilidades de liderazgo.
+            Materials and guides to strengthen your spiritual growth and leadership skills.
           </p>
         </div>
       </div>
@@ -176,7 +176,7 @@ const RecursosView = () => {
         <section className="w-full bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md p-6 transition-shadow duration-300">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center flex items-center justify-center gap-2">
             <BookOpenIcon className="w-7 h-7 text-green-600 dark:text-green-300" />
-            Liderazgo
+            Leadership
           </h3>
           <div className="grid gap-6 md:grid-cols-2">
             <DocCard
@@ -202,7 +202,7 @@ const RecursosView = () => {
         <section className="w-full bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md p-6 transition-shadow duration-300">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center flex items-center justify-center gap-2">
             <BookOpenIcon className="w-7 h-7 text-green-600 dark:text-green-300" />
-            Discipulado
+            Discipleship
           </h3>
           <div className="grid gap-6 max-w-md mx-auto">
             <DocCard
@@ -228,10 +228,10 @@ const RecursosView = () => {
         <section className="w-full bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md p-6 transition-shadow duration-300">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center flex items-center justify-center gap-2">
             <DocumentTextIcon className="w-7 h-7 text-indigo-600 dark:text-indigo-300" />
-            Seminario
+            Seminar
           </h3>
           <div className="text-center text-gray-500 dark:text-gray-400">
-            Próximamente materiales y guías para el seminario.
+            Materials and guides for the seminar coming soon.
           </div>
         </section>
       </div>
