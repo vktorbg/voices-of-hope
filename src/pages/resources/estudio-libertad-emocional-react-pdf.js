@@ -1,4 +1,4 @@
-// File: voces-de-esperanza/src/pages/recursos/claves-consejeria-matrimonial-react-pdf.js
+// File: voces-de-esperanza/src/pages/recursos/estudio-libertad-emocional-react-pdf.js
 
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
@@ -34,16 +34,16 @@ if (typeof window !== 'undefined') {
   pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
 }
 
-const ClavesConsejeriaMatrimonialReactPdfPage = () => {
+const EstudioLibertadEmocionalReactPdfPage = () => {
   const [numPages, setNumPages] = useState(null);
   const [documentError, setDocumentError] = useState(null);
   const [containerWidth, setContainerWidth] = useState(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const contentContainerRef = useRef(null);
   const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
 
   // Cambia aquí la ruta al PDF correcto
-  const pdfPath = "/pdfs/Claves-Consejeria-Matrimonial.pdf";
+  const pdfPath = "/pdfs/Estudio-Libertad-Emocional.pdf";
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -80,10 +80,10 @@ const ClavesConsejeriaMatrimonialReactPdfPage = () => {
   }, []);
 
   const navItems = [
-    { name: "Devocionales", path: "/", icon: BookOpenIcon },
+    { name: "Devotionals", path: "/", icon: BookOpenIcon },
     { name: "Videos", path: "/videos/", icon: PlayCircleIcon },
-    { name: "Quiénes somos", path: "/quienes-somos/", icon: UsersIcon },
-    { name: "Recursos", path: "/recursos/", icon: DocumentTextIcon },
+    { name: "About", path: "/about/", icon: UsersIcon },
+    { name: "Resources", path: "/resources/", icon: DocumentTextIcon },
   ];
 
   return (
@@ -95,16 +95,16 @@ const ClavesConsejeriaMatrimonialReactPdfPage = () => {
       >
         <div className="flex items-center justify-between max-w-xl mx-auto px-4">
           <Link
-            to="/recursos/"
+            to="/resources/"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out text-sm"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
-            Volver a Recursos
+            Back to Resources
           </Link>
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 text-center flex-grow ml-4">
-            Claves Consejería Matrimonial
+            Emotional Freedom Study
           </h1>
         </div>
       </div>
@@ -126,8 +126,8 @@ const ClavesConsejeriaMatrimonialReactPdfPage = () => {
                 file={pdfPath}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
-                loading={<div className="text-center p-10">Cargando estudio...</div>}
-                error={<div className="text-center p-10 text-red-500">Error al cargar el PDF.</div>}
+                loading={<div className="text-center p-10">Loading study...</div>}
+                error={<div className="text-center p-10 text-red-500">Error loading PDF.</div>}
               >
                 {Array.from(new Array(numPages), (el, index) => (
                   <Page
@@ -169,4 +169,4 @@ const ClavesConsejeriaMatrimonialReactPdfPage = () => {
   );
 };
 
-export default ClavesConsejeriaMatrimonialReactPdfPage;
+export default EstudioLibertadEmocionalReactPdfPage;

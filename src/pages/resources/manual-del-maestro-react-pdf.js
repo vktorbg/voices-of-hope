@@ -1,12 +1,13 @@
-// File: voces-de-esperanza/src/pages/recursos/estudio-libertad-emocional-react-pdf.js
+// File: voces-de-esperanza/src/pages/recursos/manual-del-maestro-react-pdf.js
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Añadido useRef aquí
 import { Link } from "gatsby";
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
 // --- Icon Components ---
+// (Tus componentes de íconos aquí)
 const BookOpenIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -34,16 +35,15 @@ if (typeof window !== 'undefined') {
   pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
 }
 
-const EstudioLibertadEmocionalReactPdfPage = () => {
+const ManualDelMaestroReactPdfPage = () => {
   const [numPages, setNumPages] = useState(null);
   const [documentError, setDocumentError] = useState(null);
   const [containerWidth, setContainerWidth] = useState(null);
-  const contentContainerRef = useRef(null);
-  const headerRef = useRef(null);
+  const contentContainerRef = useRef(null); // Renombrado para claridad
+  const headerRef = useRef(null); // Ref para el header fijo
   const [headerHeight, setHeaderHeight] = useState(0);
 
-  // Cambia aquí la ruta al PDF correcto
-  const pdfPath = "/pdfs/Estudio-Libertad-Emocional.pdf";
+  const pdfPath = "/pdfs/Manual-del-Maestro.pdf";
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -52,15 +52,18 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
 
   function onDocumentLoadError(error) {
     console.error('Error al cargar el documento PDF:', error);
-    setDocumentError('No se pudo cargar el estudio. Por favor, inténtalo de nuevo más tarde o verifica que el archivo exista.');
+    setDocumentError('No se pudo cargar el manual. Por favor, inténtalo de nuevo más tarde o verifica que el archivo exista.');
   }
 
   useEffect(() => {
+    // Calcular y establecer el ancho del contenedor para las páginas del PDF
     const setPdfPageWidth = () => {
       if (contentContainerRef.current) {
         setContainerWidth(contentContainerRef.current.getBoundingClientRect().width);
       }
     };
+    
+    // Calcular y establecer la altura del header fijo para el padding del contenido
     const setFixedHeaderHeight = () => {
       if (headerRef.current) {
         setHeaderHeight(headerRef.current.offsetHeight);
@@ -68,10 +71,10 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
     };
 
     setPdfPageWidth();
-    setFixedHeaderHeight();
+    setFixedHeaderHeight(); // Establecer altura inicial del header
 
     window.addEventListener('resize', setPdfPageWidth);
-    window.addEventListener('resize', setFixedHeaderHeight);
+    window.addEventListener('resize', setFixedHeaderHeight); // Recalcular en resize
 
     return () => {
       window.removeEventListener('resize', setPdfPageWidth);
@@ -79,21 +82,22 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
     };
   }, []);
 
+
   const navItems = [
-    { name: "Devocionales", path: "/", icon: BookOpenIcon },
+    { name: "Devotionals", path: "/", icon: BookOpenIcon },
     { name: "Videos", path: "/videos/", icon: PlayCircleIcon },
-    { name: "Quiénes somos", path: "/quienes-somos/", icon: UsersIcon },
-    { name: "Recursos", path: "/recursos/", icon: DocumentTextIcon },
+    { name: "About", path: "/about/", icon: UsersIcon },
+    { name: "Resources", path: "/resources/", icon: DocumentTextIcon },
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       {/* Header Fijo con Botón de Regreso y Título */}
       <div
-        ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-20 bg-gray-100 dark:bg-gray-900 py-3 shadow-md"
+        ref={headerRef} // Añadimos ref para medir su altura
+        className="fixed top-0 left-0 right-0 z-20 bg-gray-100 dark:bg-gray-900 py-3 shadow-md" // Cambiado a fixed, z-index más alto
       >
-        <div className="flex items-center justify-between max-w-xl mx-auto px-4">
+        <div className="flex items-center justify-between max-w-xl mx-auto px-4"> {/* Ajustado padding aquí si es necesario */}
           <Link
             to="/recursos/"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out text-sm"
@@ -103,17 +107,18 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
             </svg>
             Volver a Recursos
           </Link>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 text-center flex-grow ml-4">
-            Estudio Libertad Emocional
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 text-center flex-grow ml-4"> {/* Añadido ml-4 para espaciar del botón */}
+            Manual del Maestro
           </h1>
         </div>
       </div>
 
       <main
-        className="flex-grow overflow-y-auto pb-24 sm:pb-28"
-        style={{ paddingTop: `${headerHeight}px` }}
+        className="flex-grow overflow-y-auto pb-24 sm:pb-28" // Padding inferior para la barra de nav
+        style={{ paddingTop: `${headerHeight}px` }} // Padding superior dinámico igual a la altura del header
       >
-        <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 mt-4" ref={contentContainerRef}>
+        <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 mt-4" ref={contentContainerRef}> {/* mt-4 para un pequeño espacio adicional si el header no tiene mucho padding */}
+          
           {documentError && (
             <div className="text-center text-red-500 p-4 bg-red-100 dark:bg-red-900 border border-red-500 rounded-md">
               {documentError}
@@ -126,7 +131,7 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
                 file={pdfPath}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
-                loading={<div className="text-center p-10">Cargando estudio...</div>}
+                loading={<div className="text-center p-10">Cargando manual...</div>}
                 error={<div className="text-center p-10 text-red-500">Error al cargar el PDF.</div>}
               >
                 {Array.from(new Array(numPages), (el, index) => (
@@ -145,7 +150,7 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
         </div>
       </main>
 
-      {/* Barra de Navegación Inferior */}
+      {/* Barra de Navegación Inferior (ya es fixed) */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-top-lg z-50">
         <div className="flex justify-around max-w-md mx-auto">
           {navItems.map((item) => {
@@ -169,4 +174,4 @@ const EstudioLibertadEmocionalReactPdfPage = () => {
   );
 };
 
-export default EstudioLibertadEmocionalReactPdfPage;
+export default ManualDelMaestroReactPdfPage;

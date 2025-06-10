@@ -1,6 +1,6 @@
-// File: voces-de-esperanza/src/pages/recursos/manual-del-estudiante-react-pdf.js
+// File: voces-de-esperanza/src/pages/recursos/claves-consejeria-matrimonial-react-pdf.js
 
-import React, { useState, useEffect, useRef } from "react"; // Asegúrate de importar useRef
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
@@ -34,16 +34,16 @@ if (typeof window !== 'undefined') {
   pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
 }
 
-const ManualDelEstudianteReactPdfPage = () => {
+const ClavesConsejeriaMatrimonialReactPdfPage = () => {
   const [numPages, setNumPages] = useState(null);
-  // const [pageNumber, setPageNumber] = useState(1); // No se usa pageNumber en este setup
   const [documentError, setDocumentError] = useState(null);
   const [containerWidth, setContainerWidth] = useState(null);
-  const contentContainerRef = useRef(null); // Renombrado para claridad
-  const headerRef = useRef(null); // Ref para el header fijo
+  const contentContainerRef = useRef(null);
+  const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
-  const pdfPath = "/pdfs/Manual-del-Estudiante.pdf"; // Nombre exacto del archivo PDF
+  // Cambia aquí la ruta al PDF correcto
+  const pdfPath = "/pdfs/Claves-Consejeria-Matrimonial.pdf";
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -51,8 +51,8 @@ const ManualDelEstudianteReactPdfPage = () => {
   }
 
   function onDocumentLoadError(error) {
-    console.error('Error al cargar el documento PDF (Estudiante):', error);
-    setDocumentError('No se pudo cargar el manual. Por favor, inténtalo de nuevo más tarde o verifica que el archivo exista.');
+    console.error('Error al cargar el documento PDF:', error);
+    setDocumentError('No se pudo cargar el estudio. Por favor, inténtalo de nuevo más tarde o verifica que el archivo exista.');
   }
 
   useEffect(() => {
@@ -61,7 +61,6 @@ const ManualDelEstudianteReactPdfPage = () => {
         setContainerWidth(contentContainerRef.current.getBoundingClientRect().width);
       }
     };
-    
     const setFixedHeaderHeight = () => {
       if (headerRef.current) {
         setHeaderHeight(headerRef.current.offsetHeight);
@@ -80,12 +79,11 @@ const ManualDelEstudianteReactPdfPage = () => {
     };
   }, []);
 
-
   const navItems = [
-    { name: "Devocionales", path: "/", icon: BookOpenIcon },
+    { name: "Devotionals", path: "/", icon: BookOpenIcon },
     { name: "Videos", path: "/videos/", icon: PlayCircleIcon },
-    { name: "Quiénes somos", path: "/quienes-somos/", icon: UsersIcon },
-    { name: "Recursos", path: "/recursos/", icon: DocumentTextIcon },
+    { name: "About", path: "/about/", icon: UsersIcon },
+    { name: "Resources", path: "/resources/", icon: DocumentTextIcon },
   ];
 
   return (
@@ -106,7 +104,7 @@ const ManualDelEstudianteReactPdfPage = () => {
             Volver a Recursos
           </Link>
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 text-center flex-grow ml-4">
-            Manual del Estudiante
+            Claves Consejería Matrimonial
           </h1>
         </div>
       </div>
@@ -116,7 +114,6 @@ const ManualDelEstudianteReactPdfPage = () => {
         style={{ paddingTop: `${headerHeight}px` }}
       >
         <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 mt-4" ref={contentContainerRef}>
-          
           {documentError && (
             <div className="text-center text-red-500 p-4 bg-red-100 dark:bg-red-900 border border-red-500 rounded-md">
               {documentError}
@@ -129,7 +126,7 @@ const ManualDelEstudianteReactPdfPage = () => {
                 file={pdfPath}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
-                loading={<div className="text-center p-10">Cargando manual...</div>}
+                loading={<div className="text-center p-10">Cargando estudio...</div>}
                 error={<div className="text-center p-10 text-red-500">Error al cargar el PDF.</div>}
               >
                 {Array.from(new Array(numPages), (el, index) => (
@@ -172,4 +169,4 @@ const ManualDelEstudianteReactPdfPage = () => {
   );
 };
 
-export default ManualDelEstudianteReactPdfPage;
+export default ClavesConsejeriaMatrimonialReactPdfPage;

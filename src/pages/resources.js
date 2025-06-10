@@ -1,4 +1,4 @@
-// File: voces-de-esperanza/src/pages/recursos.js
+// File: voces-de-esperanza/src/pages/resources.js
 
 import React from "react";
 import { Link } from "gatsby";
@@ -38,7 +38,7 @@ const EyeIcon = (props) => (
 );
 // --- Fin Icon Components ---
 
-const RecursosView = () => {
+const ResourcesView = () => {
   const compartirEnlace = (url) => {
     navigator.clipboard.writeText(url)
       .then(() => {
@@ -57,12 +57,12 @@ const RecursosView = () => {
   const previewEstudiante = "/pdfs/preview-estudiante.png";
   const previewMaestro = "/pdfs/preview-maestro.png";
   const previewLibertad = "/pdfs/preview-libertad.png";
-  const leerLibertad = "/recursos/estudio-libertad-emocional-react-pdf/";
+  const readLibertad = "/resources/estudio-libertad-emocional-react-pdf/";
 
   // Nuevo: ruta para leer el PDF de consejería matrimonial
   const clavesConsejeriaUrl = "/pdfs/Claves-Consejeria-Matrimonial.pdf";
   const previewClavesConsejeria = "/pdfs/preview-consejeria.png"; // Usa una imagen de preview si tienes, si no puedes dejar un placeholder
-  const leerClavesConsejeria = "/recursos/claves-consejeria-matrimonial-react-pdf/";
+  const readClavesConsejeria = "/resources/claves-consejeria-matrimonial-react-pdf/";
 
   // Dropdown para acciones
   const DocDropdown = ({ leerTo, descargarHref, compartirHref, compartirLabel }) => {
@@ -180,20 +180,20 @@ const RecursosView = () => {
           </h3>
           <div className="grid gap-6 md:grid-cols-2">
             <DocCard
-              title="Manual del Estudiante"
+              title="Student Manual"
               previewImg={previewEstudiante}
-              leerTo="/recursos/manual-del-estudiante-react-pdf/"
+              leerTo="/resources/manual-del-estudiante-react-pdf/"
               descargarHref={estudianteUrl}
               compartirHref={estudianteUrl}
-              compartirLabel="Manual del Estudiante"
+              compartirLabel="Student Manual"
             />
             <DocCard
-              title="Manual del Maestro"
+              title="Teacher Manual"
               previewImg={previewMaestro}
-              leerTo="/recursos/manual-del-maestro-react-pdf/"
+              leerTo="/resources/manual-del-maestro-react-pdf/"
               descargarHref={maestroUrl}
               compartirHref={maestroUrl}
-              compartirLabel="Manual del Maestro"
+              compartirLabel="Teacher Manual"
             />
           </div>
         </section>
@@ -206,20 +206,20 @@ const RecursosView = () => {
           </h3>
           <div className="grid gap-6 max-w-md mx-auto">
             <DocCard
-              title="Estudio Libertad Emocional"
+              title="Emotional Freedom Study"
               previewImg={previewLibertad}
-              leerTo={leerLibertad}
+              leerTo={readLibertad}
               descargarHref={libertadEmocionalUrl}
               compartirHref={libertadEmocionalUrl}
-              compartirLabel="Estudio Libertad Emocional"
+              compartirLabel="Emotional Freedom Study"
             />
             <DocCard
-              title="Claves Consejería Matrimonial"
+              title="Keys to Marriage Counselling"
               previewImg={previewClavesConsejeria}
-              leerTo={leerClavesConsejeria}
+              leerTo={readClavesConsejeria}
               descargarHref={clavesConsejeriaUrl}
               compartirHref={clavesConsejeriaUrl}
-              compartirLabel="Claves Consejería Matrimonial"
+              compartirLabel="Keys to Marriage Counselling"
             />
           </div>
         </section>
@@ -241,16 +241,16 @@ const RecursosView = () => {
 
 const RecursosPage = () => {
   const navItems = [
-    { name: "Devocionales", path: "/", icon: BookOpenIcon },
+    { name: "Devotionals", path: "/", icon: BookOpenIcon },
     { name: "Videos", path: "/videos/", icon: PlayCircleIcon },
-    { name: "Quiénes somos", path: "/quienes-somos/", icon: UsersIcon },
-    { name: "Recursos", path: "/recursos/", icon: DocumentTextIcon },
+    { name: "About", path: "/about/", icon: UsersIcon },
+    { name: "Resources", path: "/resources/", icon: DocumentTextIcon },
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <main className="flex flex-col flex-grow overflow-y-auto pt-4 sm:pt-6 pb-24 sm:pb-28">
-        <RecursosView />
+        <ResourcesView />
       </main>
 
       <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-top-lg z-50">

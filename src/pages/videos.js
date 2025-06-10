@@ -126,10 +126,10 @@ const VideosView = () => {
 // Page component that includes VideosView and the Navigation
 const VideosPage = () => {
   const navItems = [
-    { name: "Devocionales", path: "/", icon: BookOpenIcon },
+    { name: "Devotionals", path: "/", icon: BookOpenIcon },
     { name: "Videos", path: "/videos/", icon: PlayCircleIcon },
-    { name: "Quiénes somos", path: "/quienes-somos/", icon: UsersIcon },
-    { name: "Recursos", path: "/recursos/", icon: DocumentTextIcon },
+    { name: "About", path: "/about/", icon: UsersIcon },
+    { name: "Resources", path: "/resources/", icon: DocumentTextIcon },
   ];
 
   return (
