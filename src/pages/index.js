@@ -39,7 +39,7 @@ const WhatsAppIcon = (props) => (
 
 export const query = graphql`
   query DevocionalDelDia {
-    allGoogleSpreadsheetHoja1 {
+    allGoogleSpreadsheetHoja2 {
       nodes {
         fecha
         titulo
@@ -192,7 +192,7 @@ const IndexPage = ({ data }) => {
   const day = String(todayDate.getDate()).padStart(2, '0');
   const hoy = `${year}-${month}-${day}`;
 
-  const devocional = data.allGoogleSpreadsheetHoja1.nodes.find(d => {
+  const devocional = data.allGoogleSpreadsheetHoja2.nodes.find(d => {
     if (!d.fecha) {
         return false;
     }
